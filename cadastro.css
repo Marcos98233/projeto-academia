@@ -1,19 +1,20 @@
+Cadastro.css 
+
 .cadastro-container {
-    background: rgba(255,255,255,0.92);
+    background: rgba(56, 54, 54, 0.92);
     border-radius: 14px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    box-shadow: 0 4px 24px rgba(207, 8, 8, 0.952);
     padding: 38px 32px 28px 32px;
-    max-width: 400px;
+    max-width: 320px;
     margin: 40px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 body {
-    background: url('fundo agendamento.png') no-repeat center center fixed;
+    background: url('img/fundo_cadastro.png.png') no-repeat center center fixed;
     background-size: cover;
-    color: #fff;
+    color: #140101;
     font-family: 'Segoe UI', Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -24,9 +25,9 @@ body {
 
 .cadastro-container h2 {
     margin-bottom: 22px;
-    font-weight: 700;
+    font-weight: 350;
     letter-spacing: 1px;
-    color: #1a3a5d;
+    color: #f5f5f5;
     font-size: 2rem;
 }
 
@@ -52,7 +53,7 @@ body {
 .cadastro-container button {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(90deg, #e74c3c 0%, #1a3a5d 100%);
+    background: linear-gradient(90deg, #b31c1c 0%, #850404 100%);
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -65,12 +66,12 @@ body {
 }
 
 .cadastro-container button:hover {
-    background: linear-gradient(90deg, #1a3a5d 0%, #e74c3c 100%);
+    background: linear-gradient(90deg, #8f1313 0%, #9b0101 100%);
     box-shadow: 0 4px 16px rgba(26,58,93,0.12);
 }
 
 #voltar-login {
-    color: #ffb300;
+    color: #fcfcfc;
     text-decoration: none;
     margin-top: 10px;
     display: block;
@@ -82,7 +83,7 @@ body {
 }
 
 #mensagem-cadastro {
-    color: #e74c3c;
+    color: #ddd8d7;
     margin-top: 12px;
     font-size: 14px;
     min-height: 18px;

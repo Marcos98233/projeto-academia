@@ -1,46 +1,32 @@
-body {
-    background: url('barbearia-bg.jpg.png') no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    position: relative;
-}
-
-body::before {
-    content: none;
-}
-
-.login-main-wrapper.center-form {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    width: 100vw;
-    background: transparent;
-    z-index: 1;
-}
-
 .login-container {
-    background: rgba(255,255,255,0.90);
+    background: rgba(56, 54, 54, 0.92);
     border-radius: 14px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    box-shadow: 0 4px 24px rgba(207, 8, 8, 0.952);
     padding: 38px 32px 28px 32px;
-    width: 100%;
-    max-width: 340px;
+    max-width: 320px;
+    margin: 40px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+body {
+    background: url('img/fundo_cadastro.png.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #140101;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .login-container h2 {
     margin-bottom: 22px;
-    font-weight: 700;
+    font-weight: 350;
     letter-spacing: 1px;
-    color: #1a3a5d;
+    color: #f5f5f5;
     font-size: 2rem;
 }
 
@@ -66,7 +52,7 @@ body::before {
 .login-container button {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(90deg, #e74c3c 0%, #1a3a5d 100%);
+    background: linear-gradient(90deg, #b31c1c 0%, #850404 100%);
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -79,44 +65,27 @@ body::before {
 }
 
 .login-container button:hover {
-    background: linear-gradient(90deg, #1a3a5d 0%, #e74c3c 100%);
+    background: linear-gradient(90deg, #8f1313 0%, #9b0101 100%);
     box-shadow: 0 4px 16px rgba(26,58,93,0.12);
 }
 
-#cadastro-link {
-    color: #e74c3c;
+#voltar-login {
+    color: #fcfcfc;
     text-decoration: none;
     margin-top: 10px;
     display: block;
     font-size: 15px;
-    background: transparent;
-    transition: color 0.2s;
 }
 
-#cadastro-link:hover {
+#voltar-login:hover {
     text-decoration: underline;
-    color: #1a3a5d;
 }
 
-#mensagem-erro {
-    color: #e74c3c;
+#mensagem-cadastro {
+    color: #ddd8d7;
     margin-top: 12px;
     font-size: 14px;
     min-height: 18px;
     text-align: center;
     background: transparent;
-}
-
-.login-image-wrapper {
-    display: none;
-}
-
-@media (max-width: 600px) {
-    .login-container {
-        padding: 22px 8vw 18px 8vw;
-        max-width: 98vw;
-    }
-    .login-main-wrapper.center-form {
-        padding: 0;
-    }
 } 
