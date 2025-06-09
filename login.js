@@ -1,12 +1,12 @@
 ocument.getElementById('loginForm').addEventListener('submit', async function (e) {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault(); // Impedir o envio do formulário padrão
     const email = document.getElementById('login').value;
     const password = document.getElementById('senha').value;
     const errorMessageDiv = document.getElementById('mensagem-erro');
-    // Clear previous error messages
+    // Limpar mensagens de erro anteriores
     errorMessageDiv.textContent = '';
     try {
-        // Send login data to the backend API
+        // Enviar dados de login para a API de backend
         const response = await fetch('https://your-backend-api.com/login', {
             method: 'POST',
             headers: {
@@ -18,15 +18,16 @@ ocument.getElementById('loginForm').addEventListener('submit', async function (e
             throw new Error('Login falhou. Verifique suas credenciais.');
              }
         const data = await response.json();
-        // Handle successful login
+        // Lidar com login bem sucedido
         if (data.success) {
-            // Redirect or perform actions on successful login
-            window.location.href = 'dashboard.html'; // Redirect to dashboard
+            // Redirecionar ou executar ações em caso de login bem-sucedido
+            window.location.href = 'dashboard.html'; // Redirecionar para o painel
+
         } else {
             throw new Error(data.message || 'Erro desconhecido.');
         }
     } catch (error) {
-        // Display error message
+        //Mostra mensagem de erro
         errorMessageDiv.textContent = error.message;
     }
 });

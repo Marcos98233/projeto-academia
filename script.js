@@ -1,6 +1,6 @@
 /**
- * Backend server for user registration and login
- * Uses Express, PostgreSQL, bcrypt, JWT, and CORS
+ * Servidor backend para registro e login de usuários
+* Utiliza Express, PostgreSQL, bcrypt, JWT e CORS
  */
 
 require('dotenv').config();
@@ -14,18 +14,18 @@ const { Pool } = require('pg');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Setup PostgreSQL connection pool
+// Configurar pool de conexões do PostgreSQL
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
 // Middleware
 app.use(cors({
-  origin: '*', // Adjust to your frontend origin in production
+  origin: '*', // Ajuste à origem do seu frontend em produção
 }));
 app.use(express.json());
 
-// Utility function to generate JWT token
+// Função utilitária para gerar token JWT
 function generateToken(user) {
   return jwt.sign(
     { userId: user.user_id, email: user.email, userType: user.user_type },
@@ -34,7 +34,7 @@ function generateToken(user) {
   );
 }
 
-// Registration endpoint
+// ponto final do registro
 app.post('/register', async (req, res) => {
   const { nome, email, telefone, plano, password } = req.body;
 
@@ -43,17 +43,17 @@ app.post('/register', async (req, res) => {
   }
 
   try {
-    // Check if user already exists
+    // Verifique se o usuário já existe
     const userExist = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
     if (userExist.rows.length > 0) {
       return res.status(409).json({ success: false, message: 'Usuário já cadastrado com este e-mail.' });
     }
 
-    // Hash password
+    //Hash senha
     const saltRounds = 10;
     const passwordHash = await bcrypt.hash(password, saltRounds);
 
-    // Insert into users table
+    // Inserir na tabela de usuários
     const userInsert = await pool.query(
       `INSERT INTO users (email, password_hash, user_type) 
        VALUES ($1, $2, $3) RETURNING user_id`,
@@ -61,7 +61,7 @@ app.post('/register', async (req, res) => {
     );
     const userId = userInsert.rows[0].user_id;
 
-    // Insert into students table
+    // Inserir na tabela de alunos
     await pool.query(
       `INSERT INTO students (user_id, name, phone, plan) 
        VALUES ($1, $2, $3, $4)`,
@@ -75,7 +75,7 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// Login endpoint
+// Login ponto final
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -84,20 +84,20 @@ app.post('/login', async (req, res) => {
   }
 
   try {
-    // Find user by email
+    // Encontrar usuário por e-mail
     const userResult = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
     if (userResult.rows.length === 0) {
       return res.status(401).json({ success: false, message: 'Credenciais inválidas.' });
     }
     const user = userResult.rows[0];
 
-    // Compare password hash
+    // Compare senha hash
     const passwordMatch = await bcrypt.compare(password, user.password_hash);
     if (!passwordMatch) {
       return res.status(401).json({ success: false, message: 'Credenciais inválidas.' });
     }
 
-    // Generate JWT token
+    // Gerar token JWT
     const token = generateToken(user);
 
     return res.json({ success: true, token, message: 'Login realizado com sucesso.' });
@@ -107,12 +107,12 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// Health check endpoint
+// Endpoint de verificação de integridade
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
-// Start server
+//Iniciar servidor
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
