@@ -1,14 +1,14 @@
 document.getElementById('cadastroForm').addEventListener('submit', async function (e) {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault(); // Impedir o envio do formulário padrão
     const nome = document.getElementById('nome').value;
     const email = document.getElementById('email').value;
     const telefone = document.getElementById('telefone').value;
     const plano = document.getElementById('plano').value;
     const mensagemCadastroDiv = document.getElementById('mensagem-cadastro');
-    // Clear previous messages
+    //Limpa mensagens anteriores
     mensagemCadastroDiv.textContent = '';
     try {
-        // Send registration data to the backend API
+        // Enviar dados de registro para a API de backend
         const response = await fetch('https://your-backend-api.com/cadastro', {
             method: 'POST',
             headers: {
@@ -20,17 +20,17 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
             throw new Error('Cadastro falhou. Tente novamente.');
         }
         const data = await response.json();
-        // Handle successful registration
+        // Lida com registro bem-sucedido
         if (data.success) {
             mensagemCadastroDiv.textContent = 'Cadastro realizado com sucesso!';
-            mensagemCadastroDiv.className = 'success-message'; // Add a class for styling
-            document.getElementById('cadastroForm').reset(); // Reset the form
+            mensagemCadastroDiv.className = 'success-message'; // Adicione uma classe para estilização
+            document.getElementById('cadastroForm').reset();//Reseta o formulário
         } else {
             throw new Error(data.message || 'Erro desconhecido.');
         }
     } catch (error) {
-        // Display error message
+        //Mostra mensagem de erro
         mensagemCadastroDiv.textContent = error.message;
-        mensagemCadastroDiv.className = 'error-message'; // Add a class for styling
+        mensagemCadastroDiv.className = 'error-message'; // Adicione uma classe para estilização
     }
 });

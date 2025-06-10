@@ -1,4 +1,4 @@
-*{
+* {
     font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 0;
@@ -282,14 +282,11 @@ section {
     color: #aaa;
     padding: 1rem 0;
 }
-.pricing {
-    display: flex;
-    flex-direction: row;
-/*
+
+.planos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
     gap: 1.5rem;
-*/
 }
 
 .pricing .information span {
@@ -312,10 +309,6 @@ section {
 .pricing .information p i {
     padding-right: 1rem;
     color: rgb(236, 0, 0);
-}
-
-.plan {
-    width: 30%;
 }
 
 .pricing .plan {
@@ -681,4 +674,8 @@ footer {
 
 .share {
     margin-top: -70px;
+}
+
+.planos .plan:nth-child(1)a{
+    margin-top: 105px;
 }
